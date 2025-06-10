@@ -1,0 +1,16 @@
+<odoo>
+
+    <record id="product_tree_view__id" model="ir.ui.view">
+        <field name="name">product_tree_view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page[@name='general_information']" position="after">
+                <page name="review_page" string="Review">
+                    <field name="review_ids"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

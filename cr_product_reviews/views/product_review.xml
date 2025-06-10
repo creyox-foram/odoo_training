@@ -1,0 +1,47 @@
+<odoo>
+
+    <record id="product_review_tree_view_id" model="ir.ui.view">
+        <field name="name">product.review.tree.view</field>
+        <field name="model">product.review</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id"/>
+                <field name="customer_id"/>
+                <field name="rating"/>
+                <field name="comment"/>
+                <field name="review_date"/>
+                <field name="is_approved"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_review_form_view_id" model="ir.ui.view">
+        <field name="name">product.review.form.view</field>
+        <field name="model">product.review</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="customer_id"/>
+                        <field name="rating" widget="star_rating" options='{"maxStars": 5, "filledColor": "golden", "unfilledColor": "grey"}'/>
+                        <field name="comment"/>
+                        <field name="review_date"/>
+                        <field name="is_approved"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_review_action_id" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">product Review</field>
+        <field name="res_model">product.review</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="product_review_parent_menu_id" name="Product Review"/>
+    <menuitem id="product_review_sub_menu_id" sequence="1" parent="product_review_parent_menu_id" name="Product Review"/>
+    <menuitem id="product_review_sub_menu_item1_id" parent="product_review_sub_menu_id"  name="Review" action="product_review_action_id"/>
+</odoo>
