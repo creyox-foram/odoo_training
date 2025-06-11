@@ -1,6 +1,6 @@
 {
     'name': 'cr_product_reviews',
-    'version': '1.0',
+    'version': '2.0',
     'summary': 'Product Reviews Model',
     'description': """
         Product Reviews Model
