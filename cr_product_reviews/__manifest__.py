@@ -12,8 +12,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/product_review.xml',
-        # 'views/product_template_view.xml'
-        'views/product_product.xml'
+        'views/product_product.xml',
+        'views/product_template_view.xml'
     ],
     'demo': [],
     'images': [],

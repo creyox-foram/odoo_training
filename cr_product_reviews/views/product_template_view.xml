@@ -1,0 +1,68 @@
+<odoo>
+
+    <!--    <record id="product_template_kanban_view_1">-->
+    <!--        <field name="name">product.template.kanban.view</field>-->
+    <!--        <field name="model">product.template</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <kanban>-->
+    <!--                <field name="review_ids"/>-->
+    <!--                <template>-->
+    <!--                    <t t-name="kanban-box">-->
+    <!--                        <div>-->
+    <!--                            Reviewer :-->
+    <!--                            <field name="review_ids.customer_id.name"/>-->
+    <!--                        </div>-->
+    <!--                        <div>-->
+    <!--                            Rating :-->
+    <!--                            <field name="review_ids.rating"/>-->
+    <!--                        </div>-->
+    <!--                        <div>-->
+    <!--                            Comment :-->
+    <!--                            <field name="review_ids.comment"/>-->
+    <!--                        </div>-->
+    <!--                    </t>-->
+    <!--                </template>-->
+    <!--            </kanban>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+<!--    <record id="inherited_product_template_form_view_id" model="ir.ui.view">-->
+<!--        <field name="name">inherited_product_template_form_view</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product.product_template_only_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="/form/sheet/notebook/page[@name='review_page']" position="inside">-->
+<!--                <kanban>-->
+<!--                <field name="review_ids"/>-->
+<!--                    <template>-->
+<!--                        <t t-name="kanban-box">-->
+<!--                            <div>-->
+<!--                                Reviewer :-->
+<!--                                <field name="review_ids.customer_id.name"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                Rating :-->
+<!--                                <field name="review_ids.rating"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                Comment :-->
+<!--                                <field name="review_ids.comment"/>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                    </template>-->
+<!--                </kanban>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+        <template id="custom_template_id">
+            <div class="custom-container">
+                <p>Data: <t t-esc="data"/></p>
+                <t t-foreach="docs" t-as="doc">
+                    <p><t t-esc="doc.rating"/></p>
+                    <p><t t-esc="doc.comment"/></p>
+                </t>
+            </div>
+        </template>
+
+</odoo>
