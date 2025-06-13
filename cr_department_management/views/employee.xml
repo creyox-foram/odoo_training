@@ -133,6 +133,5 @@
     <!-- Menu Item-2 -->
     <menuitem id="employee_parent_menu" sequence="2" parent="dep_parent_main_menu" name="Employees"></menuitem>
     <!-- sub item of menu item2 -->
-    <menuitem id="employee_menu_items" parent="employee_parent_menu" action="employee_action_id"
-              name="Employees"></menuitem>
+    <menuitem id="employee_menu_items" parent="employee_parent_menu" action="employee_action_id" name="Employees"></menuitem>
 </odoo>

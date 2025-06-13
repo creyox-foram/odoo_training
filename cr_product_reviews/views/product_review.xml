@@ -7,7 +7,7 @@
             <tree>
                 <field name="product_id"/>
                 <field name="customer_id"/>
-                <field name="rating"/>
+                <field name="rating" widget="priority"/>
                 <field name="comment"/>
                 <field name="review_date"/>
                 <field name="is_approved"/>
@@ -24,13 +24,25 @@
                     <group>
                         <field name="product_id"/>
                         <field name="customer_id"/>
-                        <field name="rating" widget="star_rating" options='{"maxStars": 5, "filledColor": "golden", "unfilledColor": "grey"}'/>
+                        <field name="rating" widget="priority"/>
                         <field name="comment"/>
                         <field name="review_date"/>
                         <field name="is_approved"/>
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="product_review_search_view_id" model="ir.ui.view">
+        <field name="name">product.review.search.view</field>
+        <field name="model">product.review</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="product_id"/>
+                <field name="rating"/>
+                <field name="is_approved"/>
+            </search>
         </field>
     </record>
 

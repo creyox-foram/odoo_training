@@ -7,13 +7,13 @@
     """,
     'category': 'accounting',
     'website': '',
-    'depends': ['base', 'product'],
+    'depends': ['base', 'product','stock'],
     'author': 'dipen',
     'data': [
         'security/ir.model.access.csv',
         'views/product_review.xml',
         'views/product_product.xml',
-        'views/product_template_view.xml'
+        'views/product_review_menu.xml',
     ],
     'demo': [],
     'images': [],
