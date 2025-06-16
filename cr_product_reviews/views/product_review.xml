@@ -7,10 +7,10 @@
             <tree>
                 <field name="product_id"/>
                 <field name="customer_id"/>
-                <field name="rating" widget="priority"/>
                 <field name="comment"/>
                 <field name="review_date"/>
                 <field name="is_approved"/>
+                <field name="rating" widget="priority"/>
             </tree>
         </field>
     </record>
@@ -24,10 +24,10 @@
                     <group>
                         <field name="product_id"/>
                         <field name="customer_id"/>
-                        <field name="rating" widget="priority"/>
                         <field name="comment"/>
                         <field name="review_date"/>
                         <field name="is_approved"/>
+                        <field name="rating" widget="priority"/>
                     </group>
                 </sheet>
             </form>

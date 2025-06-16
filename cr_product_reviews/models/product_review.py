@@ -2,6 +2,7 @@
 # Part of Creyox Technologies.
 
 from odoo import models, fields, api
+from datetime import datetime, timedelta
 
 class ProductReview(models.Model):
     _name = "product.review"
@@ -13,6 +14,15 @@ class ProductReview(models.Model):
     review_date = fields.Date(string='Review Date')
     comment = fields.Text(string='Comment')
     is_approved = fields.Boolean(string='Is Approved')
+    product_name = fields.Char(string='Product Name', related='product_id.name')
+    # product_price = fields.Monetary(string='Product Price', related='product_id.base_unit_price')
+    product_category = fields.Char(string='Product Category', related='product_id.categ_id.name')
+
+    # @api.model
+    # def create_action(self):
+    #     self.create({
+    #         'name' : ''
+    #     })
 
     @api.constrains('rating')
     def check_rating_under_5(self):

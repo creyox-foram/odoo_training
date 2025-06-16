@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 # Part of Creyox Technologies.
+from datetime import timedelta, datetime
 
-num = 1
-formatted_num = f"{num:05d}"  # 5 is the total number of digits, including leading zeros
-# print(formatted_num)  # Output: 00001
-for i in range(5):
-    print(str(i).zfill(5))
+today = datetime.today().date()
+date1 = datetime(2025, 6, 11).date()
+
+print(today)
+before_30_days = today - timedelta(days=30)
+print(before_30_days)
+
+print(date1 > (today - timedelta(days=30)))
