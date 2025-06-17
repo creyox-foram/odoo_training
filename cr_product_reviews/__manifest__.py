@@ -14,6 +14,7 @@
         'views/product_review.xml',
         'views/product_product.xml',
         'views/product_review_menu.xml',
+        'views/product_review_report_wizard.xml',
     ],
     'demo': [],
     'images': [],

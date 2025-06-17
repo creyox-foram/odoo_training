@@ -264,6 +264,7 @@
         <field name="print_report_name">'Department Report'</field> <!-- name of the report -->
     </record>
 
+
     <!-- main menu icon -->
     <menuitem id="dep_parent_main_menu" name="Department Management"></menuitem>
 

@@ -18,12 +18,6 @@ class ProductReview(models.Model):
     # product_price = fields.Monetary(string='Product Price', related='product_id.base_unit_price')
     product_category = fields.Char(string='Product Category', related='product_id.categ_id.name')
 
-    # @api.model
-    # def create_action(self):
-    #     self.create({
-    #         'name' : ''
-    #     })
-
     @api.constrains('rating')
     def check_rating_under_5(self):
         if not int(self.rating) >= 0 and int(self.rating) <= 5:

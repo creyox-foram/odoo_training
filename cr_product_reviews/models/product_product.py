@@ -7,6 +7,7 @@ class ProductProduct(models.Model):
     _inherit = ['product.product']
 
     review_ids = fields.One2many(comodel_name='product.review', inverse_name='product_id', string='Reviews')
+    no_of_reviews = fields.Integer(string='Total Reviews', compute='count_no_of_reviews')
 
     def show_related_reviews(self):
         print(self)
@@ -19,3 +20,7 @@ class ProductProduct(models.Model):
             'target': 'new',
             'domain': [('product_id', '=', product_id)]
         }
+
+    @api.depends('review_ids.rating')
+    def count_no_of_reviews(self):
+        print(self)
