@@ -13,7 +13,7 @@
 
     <record id="product_review_report_wizard_form_view_id" model="ir.ui.view">
         <field name="name">product_review_report_form_view</field>
-        <field name="model">product.review.report_wizard</field>
+        <field name="model">product.review.report.wizard</field>
         <field name="arch" type="xml">
             <form>
                 <group>
@@ -23,7 +23,7 @@
                     <field name="approval_status"/>
                     <footer>
                         <button type="object" class="oe_highlight" string="Generate Report"
-                                name="generate_review_report "/>
+                                name="generate_review_report"/>
                         <button type="object" class="oe_highlight" special="cancel" string="Cancel"/>
                     </footer>
                 </group>
@@ -42,6 +42,8 @@
                                     <h1>
                                         <t t-esc="doc.name"/>
                                     </h1>
+                                    <p>Comments</p>
+                                    <t t-esc="doc.review_ids"/>
                                 </div>
                             </div>
                         </t>
