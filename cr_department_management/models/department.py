@@ -158,7 +158,6 @@ class Department(models.Model):
         mail_template.send_mail(self.id, email_values=context)
         print(mail_template)
 
-
     # sending mail only from python side
     def send_mail(self):
         body_html = (

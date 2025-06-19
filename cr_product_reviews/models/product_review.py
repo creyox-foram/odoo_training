@@ -17,14 +17,16 @@ class ProductReview(models.Model):
     product_name = fields.Char(string='Product Name', related='product_id.name')
     # product_price = fields.Monetary(string='Product Price', related='product_id.base_unit_price')
     product_category = fields.Char(string='Product Category', related='product_id.categ_id.name')
-    active = fields.Boolean(string='Active')
+    active = fields.Boolean(string='Active', default = True)
 
-    @api.constrains('rating')
-    def check_rating_under_5(self):
-        if not int(self.rating) >= 0 and int(self.rating) <= 5:
-            raise ValueError('Rating should be 1-5 !!')
+    # @api.constrains('rating')
+    # def check_rating_under_5(self):
+    #     if not int(self.rating) >= 0 and int(self.rating) <= 5:
+    #         raise ValueError('Rating should be 1-5 !!')
 
     def inactive_older_review(self):
-        print("schedule action")
-        reviews = self.env['product.review'].search([])
-        print(reviews)
+        reviews = self.search([])
+        six_months_ago = datetime.today().date() - timedelta(days= 180)
+        for review in reviews:
+            if review.review_date < six_months_ago:
+                review.active = False

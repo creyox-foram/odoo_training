@@ -12,6 +12,29 @@ class ProductWizard(models.TransientModel):
     def generate_review_report(self):
         current_rec_id = self._context['current_product_template_id']
         product_template_record = self.env['product.review.report.wizard'].browse(int(current_rec_id))
-        print(product_template_record)
+
+        product_record = self.env['product.product'].search([('product_tmpl_id', '=', int(current_rec_id))])
+
+        reviews = self.env['product.review'].search([('product_id', '=', product_record.id)])
+        value = ''''''
+        for review in reviews:
+            if review:
+                date1 = self.date1
+                date2 = self.date2
+                min_rating = int(self.min_rating)
+
+                if self.approval_status == review.is_approved:
+                    if review.review_date >= date1 and review.review_date <= date2:
+                        if int(review.rating) >= min_rating :
+                            value += f"""
+                                <div>
+                                    <p> Reviewer: {review.customer_id.name}</p>
+                                    <p> Rating: {review.rating} STARS</p>
+                                    <p> Comment: {review.comment}</p>
+                                </div>
+                                <hr>
+                            """
+        print(value)
+        context = {'reviews': value}
         product_review_report_pdf = self.env.ref('cr_product_reviews.product_review_pdf_report_action_id', raise_if_not_found=False)
-        return product_review_report_pdf.report_action(product_template_record)
+        return product_review_report_pdf.report_action(product_template_record, data = context)

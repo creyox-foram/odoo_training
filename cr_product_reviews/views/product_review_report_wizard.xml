@@ -43,7 +43,8 @@
                                         <t t-esc="doc.name"/>
                                     </h1>
                                     <p>Comments</p>
-                                    <t t-esc="doc.review_ids"/>
+<!--                                    <t t-esc="doc.review_ids"/>-->
+                                    <t t-esc="context['reviews']"/>
                                 </div>
                             </div>
                         </t>

@@ -13,7 +13,6 @@ class ProductTemplate(models.Model):
     average_rating = fields.Float(string='Average Rating', compute='count_average_rating')
 
     def get_review_ids(self):
-        print("i am inside get-review")
         product_record = self.env['product.product'].search([('product_tmpl_id', '=', self.id)])
         review_ids = self.env['product.review'].search([('product_id', '=', product_record.id)])
         self.reviews = review_ids
@@ -40,8 +39,6 @@ class ProductTemplate(models.Model):
         return f"{'★' * int(rating)}{'☆' * (5 - int(rating))} ({rating}/5)"
 
     def get_report_details(self):
-        print("inside report server action")
-        print(self)
         return {
             'name': 'review_report',
             'type': 'ir.actions.act_window',
