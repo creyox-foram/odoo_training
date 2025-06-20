@@ -36,18 +36,21 @@
             <main>
                 <div class="page">
                     <div>
-                        <t t-foreach="docs" t-as="doc">
-                            <div class="row">
-                                <div class="col-md-6 col-auto">
-                                    <h1>
-                                        <t t-esc="doc.name"/>
-                                    </h1>
-                                    <p>Comments</p>
-<!--                                    <t t-esc="doc.review_ids"/>-->
-                                    <t t-esc="context['reviews']"/>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6 col-auto">
+                                <h1 class="mb-9">
+                                    <strong><t t-esc="product_name"/></strong>
+                                </h1>
+                                <t t-foreach="reviews" t-as="review">
+                                    <div>
+                                        <h4><strong>Customer Name : </strong><t t-esc="review['review_customer']"/> </h4>
+                                        <h4><strong>Rating : </strong><t t-esc="review['review_rating']"/> STARS</h4>
+                                        <h4><strong>Comment : </strong><t t-esc="review['review_comment']"/> </h4>
+                                    </div>
+                                    <hr/>
+                                </t>
                             </div>
-                        </t>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -56,7 +59,7 @@
 
     <record id="product_review_pdf_report_action_id" model="ir.actions.report">
         <field name="name">Pdf Report</field>
-        <field name="model">product.template</field>
+        <field name="model">product.review.report.wizard</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">cr_product_reviews.product_review_pdf_report_id</field>
         <field name="report_file">cr_product_reviews.product_review_pdf_report_id</field>

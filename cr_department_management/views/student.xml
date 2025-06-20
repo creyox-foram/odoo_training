@@ -5,7 +5,7 @@
         <field name="model">student.student</field>
         <field name="arch" type="xml">
             <search string="student_search_view">
-                <filter name="check_city_rajkot" string="Check age" domain="[('city', '=', 'rajkot'),]"/>
+                <filter name="check_city_rajkot" string="Check City" domain="[('city', '=', 'rajkot'),]"/>
                 <field name="name"/>
                 <field name="city"/>
             </search>
