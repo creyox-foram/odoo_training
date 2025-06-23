@@ -1,0 +1,34 @@
+<odoo>
+
+    <record id="employee_training_records_tree_view_id" model="ir.ui.view">
+        <field name="name">employee_training_record_tree_view</field>
+        <field name="model">employee.training.record</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="training_id"/>
+                <field name="status"/>
+                <field name="feedback"/>
+                <field name="employee_job_title"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_training_records_form_view_id" model="ir.ui.view">
+        <field name="name">employee.training.records.form.view</field>
+        <field name="model">employee.training.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="training_id"/>
+                        <field name="status"/>
+                        <field name="feedback"/>
+                        <field name="employee_job_title"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

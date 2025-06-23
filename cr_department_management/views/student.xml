@@ -194,6 +194,5 @@
     <menuitem id="student_parent_menu_id" sequence="1" parent="dep_parent_main_menu" name="Students"/>
     <!-- sub item of menu item1 -->
     <menuitem id="student_menu_items" parent="student_parent_menu_id" action="student_action_id" name="Students"/>
-
     <menuitem id="student_google_url_menu_id" parent="student_parent_menu_id" action="url_action_id" name="Google"/>
 </odoo>
