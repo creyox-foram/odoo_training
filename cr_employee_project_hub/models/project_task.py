@@ -9,3 +9,4 @@ class HrEmployee(models.Model):
     recommended_for = fields.Many2many(string="Training Records", comodel_name="hr.employee")
     skill_match_percent = fields.Float(string='Skill Percent')
     assigned_to_ids = fields.Many2many(string='Assigned To', comodel_name="res.partner")
+    task_completed_employee = fields.Char(string='Task Completed Employee', related='recommended_for.name', domain=[('recommended_for.training_record_ids.status', '=', 'completed')])

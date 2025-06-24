@@ -14,6 +14,8 @@
         'views/employee_training.xml',
         'views/training_session.xml',
         'views/employee_menus.xml',
+        'views/project_task.xml',
+        'views/hr_employee.xml',
     ],
     'demo': [],
     'images': [],

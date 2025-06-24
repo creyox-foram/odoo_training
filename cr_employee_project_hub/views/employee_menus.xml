@@ -19,8 +19,8 @@
     <menuitem id="employee_child_item_02_id" parent="employee_sub_menu_id" action="employee_training_record_action_id" name="Employee Training Records"/>
 
 
-    <menuitem id="project_sub_menu_id" name="Resource Planning" parent="project.menu_projects" sequence="5"/>
-    <menuitem id="project_child_item_1_id" parent="project_sub_menu_id" action="" name="Skill-Matched Tasks"/>
-    <menuitem id="employee_child_item_2_id" parent="project_sub_menu_id" action="" name="Training-Based Assignment"/>
+    <menuitem id="project_sub_menu_id" name="Resource Planning" parent="project.menu_main_pm" sequence="5"/>
+    <menuitem id="project_child_item_01_id" parent="project_sub_menu_id" action="" name="Skill-Matched Tasks"/>
+    <menuitem id="project_child_item_02_id" parent="project_sub_menu_id" action="" name="Training-Based Assignment"/>
 
 </odoo>

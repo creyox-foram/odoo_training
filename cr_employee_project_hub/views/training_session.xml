@@ -19,6 +19,9 @@
         <field name="model">training.session</field>
         <field name="arch" type="xml">
             <form>
+                <div name="button_box">
+                    <button type="object" class="oe_highlight" string="Participants" name="show_all_participants"/>
+                </div>
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -29,6 +32,17 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="training_session_search_view_id" model="ir.ui.view">
+        <field name="name">training.session.search.view</field>
+        <field name="model">training.session</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="date"/>
+                <field name="trainer"/>
+            </search>
         </field>
     </record>
 </odoo>

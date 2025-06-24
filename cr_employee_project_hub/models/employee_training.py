@@ -13,3 +13,6 @@ class TrainingSession(models.Model):
     status = fields.Selection([('not_started', 'Not Started'), ('in_progress', 'In Progress'), ('completed', 'Completed')], string="Status")
     feedback = fields.Text(string="Feedback")
     employee_job_title = fields.Char(string='Job Title', related='employee_id.job_title')
+    employee_name = fields.Char(string="Employee Name", related="employee_id.name")
+    training_trainer = fields.Char(string="Training Trainer", related='training_id.trainer')
+    training_date = fields.Date(string="Training Date", related='training_id.date')
