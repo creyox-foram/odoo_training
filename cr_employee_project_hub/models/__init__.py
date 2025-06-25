@@ -5,3 +5,4 @@ from . import hr_employee
 from . import employee_training
 from . import project_task
 from . import training_session
+from . import hr_leave

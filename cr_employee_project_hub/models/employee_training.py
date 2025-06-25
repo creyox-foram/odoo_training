@@ -10,7 +10,7 @@ class TrainingSession(models.Model):
 
     employee_id = fields.Many2one(string="Employee", comodel_name="hr.employee")
     training_id = fields.Many2one(string="Training", comodel_name="training.session")
-    status = fields.Selection([('not_started', 'Not Started'), ('in_progress', 'In Progress'), ('completed', 'Completed')], string="Status")
+    status = fields.Selection([('not_started', 'Not Started'), ('in_progress', 'In Progress'), ('completed', 'Completed'), ('pause', 'Pause')], string="Status", default='not_started')
     feedback = fields.Text(string="Feedback")
     employee_job_title = fields.Char(string='Job Title', related='employee_id.job_title')
     employee_name = fields.Char(string="Employee Name", related="employee_id.name")

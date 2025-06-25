@@ -9,6 +9,11 @@
                 <field name="assigned_to_ids"/>
                 <field name="task_completed_employee"/>
             </xpath>
+            <xpath expr="/form/sheet" position="before">
+                <div name="button_box">
+                    <button name="suggest_task_assignees" string="Task Assignees" type="object" class="oe_highlight"/>
+                </div>
+            </xpath>
         </field>
     </record>
 
