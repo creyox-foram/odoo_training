@@ -16,3 +16,7 @@ class TrainingSession(models.Model):
     employee_name = fields.Char(string="Employee Name", related="employee_id.name")
     training_trainer = fields.Char(string="Training Trainer", related='training_id.trainer')
     training_date = fields.Date(string="Training Date", related='training_id.date')
+
+    def start_employee_training(self):
+        if self.status == 'not_started':
+            self.status = 'in_progress'

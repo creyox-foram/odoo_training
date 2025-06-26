@@ -21,6 +21,9 @@
         <field name="model">employee.training.record</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button type="object" string="Start Training" name="start_employee_training" class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="employee_id"/>
