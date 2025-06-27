@@ -1,20 +1,29 @@
 <odoo>
 
-    <redocord id="training_manager_group_id" model="res.groups">
+    <record id="training_manager_group_id" model="res.groups">
         <field name="name">training.manager.group</field>
         <field name="category_id" ref="base.module_category_accounting"/>
-    </redocord>
-    <redocord id="hr_officer_group_id" model="res.groups">
+    </record>
+
+    <record id="hr_officer_group_id" model="res.groups">
         <field name="name">hr.officer.group</field>
         <field name="category_id" ref="base.module_category_accounting"/>
-    </redocord>
-    <redocord id="project_manager_group_id" model="res.groups">
+    </record>
+
+    <record id="project_manager_group_id" model="res.groups">
         <field name="name">project.manager.group</field>
         <field name="category_id" ref="base.module_category_accounting"/>
-    </redocord>
-    <redocord id="employee" model="res.groups">
-        <field name="name">training.manager.group</field>
+    </record>
+
+    <record id="employee_group_id" model="res.groups">
+        <field name="name">employees.group</field>
         <field name="category_id" ref="base.module_category_accounting"/>
-    </redocord>
+    </record>
+
+    <record id="employee_can_see_own_records_only_id" model="ir.rule">
+        <field name="name">employee.see.own.records</field>
+        <field name="model_id" ref="cr_employee_project_hub.model_training_session"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+    </record>
 
 </odoo>

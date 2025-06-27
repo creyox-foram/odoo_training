@@ -42,15 +42,15 @@ class HrEmployee(models.Model):
     def count_skill_match_percentage(self):
         percent_format = f" "
         required_training_recs = self.required_training.ids  # list of required training ids
-        for employee in self.recommended_for:
-            percentage = 0
-            completed_training_recs = self.env['employee.training.record'].search([('employee_id', '=', employee.id), ('status', '=', 'completed')])
-            training_rec_ids = []
-            for rec in completed_training_recs:
-                training_rec_ids.append(rec.training_id.id)
+        if len(required_training_recs) :
+            for employee in self.recommended_for:
+                percentage = 0
+                completed_training_recs = self.env['employee.training.record'].search([('employee_id', '=', employee.id), ('status', '=', 'completed')])
+                training_rec_ids = []
+                for rec in completed_training_recs:
+                    training_rec_ids.append(rec.training_id.id)
 
-            matched_skills = set(required_training_recs).intersection(set(training_rec_ids))
-            percentage = (len(list(matched_skills)) * 100) / len(required_training_recs)
-            percent_format += f"{employee.name} : {percentage}%, "
-
+                matched_skills = set(required_training_recs).intersection(set(training_rec_ids))
+                percentage = (len(list(matched_skills)) * 100) / len(required_training_recs)
+                percent_format += f"{employee.name} : {percentage}%, "
         self.skill_match_percent = percent_format
