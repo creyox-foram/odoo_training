@@ -7,7 +7,7 @@
     """,
     'category': 'accounting',
     'website': '',
-    'depends': ['base', 'hr', 'project'],
+    'depends': ['base', 'hr_holidays', 'hr', 'project'],
     'author': 'dipen',
     'data': [
         'views/employee_assign_wiz.xml',

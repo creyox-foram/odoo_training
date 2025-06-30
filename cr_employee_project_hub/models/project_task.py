@@ -5,7 +5,7 @@ from docutils.parsers.rst.directives import percentage
 from odoo import models, fields, api
 import random
 
-class HrEmployee(models.Model):
+class ProjectTask(models.Model):
     _inherit = ["project.task"]
 
     recommended_for = fields.Many2many(string="Assign Employee", comodel_name="hr.employee")

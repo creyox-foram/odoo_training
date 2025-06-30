@@ -22,13 +22,16 @@
         <field name="view_mode">form</field>
     </record>
 
-    <menuitem id="employee_sub_menu_id" groups="hr_officer_group_id" name="Employee Development" parent="hr.menu_hr_root" sequence="4"/>
-    <menuitem id="employee_child_item_01_id" groups="project_manager_group_id" parent="employee_sub_menu_id" action="employee_training_session_action_id"
+    <menuitem id="employee_sub_menu_id" groups="training_manager_group_id,hr_officer_group_id,project_manager_group_id" name="Employee Development" parent="hr.menu_hr_root" sequence="4"/>
+
+    <menuitem id="employee_child_item_01_id" parent="employee_sub_menu_id" action="employee_training_session_action_id"
               name="Training Sessions"/>
-    <menuitem id="employee_child_item_02_id" groups="hr_officer_group_id" parent="employee_sub_menu_id" action="employee_training_record_action_id"
+    <menuitem id="employee_child_item_02_id" parent="employee_sub_menu_id" action="employee_training_record_action_id"
               name="Employee Training Records"/>
 
+
     <menuitem id="project_sub_menu_id" name="Resource Planning" parent="project.menu_main_pm" sequence="5"/>
+
     <menuitem id="project_child_item_01_id" parent="project_sub_menu_id" action="" name="Skill-Matched Tasks"/>
     <menuitem id="project_child_item_02_id" parent="project_sub_menu_id"
               action="employee_assign_wizard_form_view_id" name="Training-Based Assignment"/>
