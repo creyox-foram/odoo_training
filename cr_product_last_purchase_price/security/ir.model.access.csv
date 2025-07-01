@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+inherited_product_product_model_id,product_product,model_product_product,,1,1,1,1
+inherited_purchase_order_model_id,purchase_order,model_purchase_order,,1,1,1,1
