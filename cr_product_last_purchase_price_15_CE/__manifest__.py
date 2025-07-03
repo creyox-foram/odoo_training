@@ -1,14 +1,14 @@
 {
-    'name': 'cr_product_last_purchase_price',
+    'name': 'Product Last Purchase Price',
     'version': '1.0',
-    'summary': 'cr_product_last_purchase_price',
+    'summary': 'Product Last Purchase Price',
     'description': """
         This module finds the last purchase price
     """,
     'category': 'accounting',
     'website': '',
     'depends': ['base', 'purchase', 'product', ],
-    'author': 'dipen',
+    'author': 'Creyox Technology',
     'data': [
         'views/product_product.xml',
         'security/ir.model.access.csv',
