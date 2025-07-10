@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 # Part of Creyox Technologies.
 {
-    'name': 'Smart_Payment_Term_Recommender',
+    'name': 'cr_smart_payment_term_recommender',
     'version': '1.0',
-    'summary': 'Smart Payment Term Recommender',
+    'summary': 'cr_smart_payment_term_recommender',
     'description': """
-        Smart Payment Term Recommender
+        cr_smart_payment_term_recommender
     """,
     'category': 'accounting',
     'website': '',
@@ -15,6 +15,8 @@
         'security/ir.model.access.csv',
         'views/payment_term_matrix.xml',
         'views/payment_term_matrix_rule.xml',
+        'views/payment_term_matrix_rule_line.xml',
+        'views/payment_term_mapping_rule.xml',
     ],
     'demo': [],
     'images': [],

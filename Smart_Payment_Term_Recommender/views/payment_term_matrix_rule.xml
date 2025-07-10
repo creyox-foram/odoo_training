@@ -7,11 +7,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="matrix_id"/>
-                <field name="operator"/>
-                <field name="value_1"/>
-                <field name="value_2"/>
-                <field name="type"/>
-                <field name="score"/>
+                <field name="rule_line_ids"/>
             </tree>
         </field>
     </record>
@@ -24,11 +20,7 @@
                 <sheet>
                     <group>
                         <field name="matrix_id"/>
-                        <field name="operator"/>
-                        <field name="value_1"/>
-                        <field name="value_2"/>
-                        <field name="type"/>
-                        <field name="score"/>
+                        <field name="rule_line_ids"/>
                     </group>
                 </sheet>
             </form>
@@ -42,6 +34,8 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Payment Matrix Rule" id="payment_term_matrix_rule_parent_menu_id" sequence="1" parent="payment_term_matrix_main_menu_id"/>
-    <menuitem name="Payment Matrix Rule" id="payment_term_matrix_rule_child_item_1_id" parent="payment_term_matrix_rule_parent_menu_id" action="payment_term_matrix_rule_action_id"/>
+    <menuitem name="Payment Matrix Rule" id="payment_term_matrix_rule_parent_menu_id" sequence="1"
+              parent="payment_term_matrix_main_menu_id"/>
+    <menuitem name="Payment Matrix Rule" id="payment_term_matrix_rule_child_item_1_id"
+              parent="payment_term_matrix_rule_parent_menu_id" action="payment_term_matrix_rule_action_id"/>
 </odoo>

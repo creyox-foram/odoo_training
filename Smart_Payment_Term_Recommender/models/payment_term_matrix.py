@@ -9,4 +9,4 @@ class PaymentTermMatrix(models.Model):
     code = fields.Char(string='Code', )
     description = fields.Text(string='Description')
     type = fields.Selection([('numeric', 'Numeric'), ('percent', 'Percent'), ('monetary', 'Monetary'), ('ratio', 'Ratio'), ('days', 'Days'), ('count', 'Count')], string='Type')
-    active = fields.Boolean(string='Boolean')
+    active = fields.Boolean(string='Boolean', default=True)

@@ -1,0 +1,35 @@
+<odoo>
+
+    <record id="payment_term_average_days_id" model="payment.term.matrix">
+        <field name="name">Average Days to Pay</field>
+        <field name="code">avg_days_to_pay</field>
+        <field name="description">Avg. days taken by customer to pay invoices</field>
+        <field name="type">days</field>
+    </record>
+<!--  continue from here  -->
+    <record id="payment_term_on_time_payment" model="payment.term.matrix">
+        <field name="name">On-Time Payment %</field>
+        <field name="code">on_time_percent</field>
+        <field name="description">% of invoices paid on or before due date</field>
+        <field name="type">percent</field>
+    </record>
+    <record id="payment_term_average_days" model="payment.term.matrix">
+        <field name="name">Average Days to Pay</field>
+        <field name="code">avg_days_to_pay</field>
+        <field name="description">Avg. days taken by customer to pay invoices</field>
+        <field name="type">days</field>
+    </record>
+    <record id="payment_term_average_days" model="payment.term.matrix">
+        <field name="name">Average Days to Pay</field>
+        <field name="code">avg_days_to_pay</field>
+        <field name="description">Avg. days taken by customer to pay invoices</field>
+        <field name="type">days</field>
+    </record>
+    <record id="payment_term_average_days" model="payment.term.matrix">
+        <field name="name">Average Days to Pay</field>
+        <field name="code">avg_days_to_pay</field>
+        <field name="description">Avg. days taken by customer to pay invoices</field>
+        <field name="type">days</field>
+    </record>
+
+</odoo>
