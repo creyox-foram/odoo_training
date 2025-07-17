@@ -10,13 +10,14 @@
     'category': 'accounting',
     'website': '',
     'authro': 'Creyox Technologies',
-    'depends': ['base'],
+    'depends': ['base', 'account'],
     'data': [
         'security/ir.model.access.csv',
         'views/payment_term_matrix.xml',
         'views/payment_term_matrix_rule.xml',
         'views/payment_term_matrix_rule_line.xml',
         'views/payment_term_mapping_rule.xml',
+        'data/payment_term_matrix_data.xml'
     ],
     'demo': [],
     'images': [],

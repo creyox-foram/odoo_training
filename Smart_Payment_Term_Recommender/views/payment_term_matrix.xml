@@ -34,13 +34,12 @@
     </record>
 
     <record id="payment_term_matrix_action_id" model="ir.actions.act_window">
-        <field name="name">Payment Term Matrix Action</field>
+        <field name="name">Payment Terms</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">payment.term.matrix</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Smart Payment" id="payment_term_matrix_main_menu_id"/>
-    <menuitem name="Payment Matrix" id="payment_term_matrix_parent_menu_id" sequence="1" parent="payment_term_matrix_main_menu_id"/>
-    <menuitem name="Payment Matrix" id="payment_term_matrix_child_item_1_id" parent="payment_term_matrix_main_menu_id" action="payment_term_matrix_action_id"/>
+    <menuitem name="Payment Matrix Configuration" id="payment_term_matrix_parent_menu_id" sequence="40" parent="account.menu_finance"/>
+    <menuitem name="Payment Terms" id="payment_term_matrix_child_item_1_id" parent="payment_term_matrix_parent_menu_id" action="payment_term_matrix_action_id"/>
 </odoo>

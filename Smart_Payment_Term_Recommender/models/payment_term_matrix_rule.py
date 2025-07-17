@@ -6,5 +6,4 @@ class PaymentTermMatrixRule(models.Model):
     _name = "payment.term.matrix.rule"
 
     matrix_id = fields.Many2one(comodel_name='payment.term.matrix', string='Matrix')
-    rule_line_ids = fields.One2many(comodel_name='payment.term.matrix.rule.line', inverse='rule_id', string='Rule Line')
-
+    rule_line_ids = fields.One2many(comodel_name="payment.term.matrix.rule.line", inverse_name="rule_id")

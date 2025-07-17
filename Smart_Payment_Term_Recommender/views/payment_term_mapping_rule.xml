@@ -16,7 +16,7 @@
 
     <record id="payment_term_mapping_rule_form_view_id" model="ir.ui.view">
         <field name="name">Payment Term Mapping Rule Form View</field>
-        <field name="model">payment.term.mapping.rule.rule</field>
+        <field name="model">payment.term.mapping.rule</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -32,9 +32,11 @@
     </record>
 
     <record id="payment_term_mapping_rule_action_id" model="ir.actions.act_window">
-        <field name="name">Payment Term Mapping Rule Action</field>
+        <field name="name">Payment Term Score</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">payment.term.mapping.rule.rule</field>
+        <field name="res_model">payment.term.mapping.rule</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <menuitem name="Payment Term Mapping" id="payment_term_mapping_rule_child_item_2" parent="payment_term_matrix_parent_menu_id" action="payment_term_mapping_rule_action_id"/>
 </odoo>

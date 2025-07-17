@@ -6,12 +6,11 @@
         <field name="model">payment.term.matrix.rule.line</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="rule_id"/>
                 <field name="operator"/>
                 <field name="value_1"/>
                 <field name="value_2"/>
                 <field name="score"/>
-                <field name="description"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
@@ -23,12 +22,11 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="rule_id"/>
                         <field name="operator"/>
                         <field name="value_1"/>
-                        <field name="value_2"/>
+                        <field name="value_2" invisible="operator != 'between'"/>
                         <field name="score"/>
-                        <field name="description"/>
+                        <field name="active"/>
                     </group>
                 </sheet>
             </form>
@@ -36,7 +34,7 @@
     </record>
 
     <record id="payment_term_matrix_rule_line_action_id" model="ir.actions.act_window">
-        <field name="name">Payment Term Matrix Rule Line Action</field>
+        <field name="name">Payment Matrix Rules</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">payment.term.matrix.rule.line</field>
         <field name="view_mode">tree,form</field>

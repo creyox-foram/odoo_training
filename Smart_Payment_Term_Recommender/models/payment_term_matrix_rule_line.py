@@ -10,5 +10,4 @@ class PaymentTermMatrixRuleLine(models.Model):
     value_1 = fields.Float(string='Value 1')
     value_2 = fields.Float(string='Value 2')
     score = fields.Float(string='Score')
-    description = fields.Text(string='Description')
-    active = fields.Boolean(string='Active')
+    active = fields.Boolean(string='Active', default='True')
