@@ -12,8 +12,6 @@ class sale_order(models.Model):
     _inherit = ['sale.order']
 
     def split(self):
-        print("i am from server action")
-        print(self)
         return {
             'name' : 'Split',
             'type' : 'ir.actions.act_window',

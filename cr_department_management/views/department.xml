@@ -92,22 +92,22 @@
         </field>
     </record>
 
-    <record id = "department_pivot_id" model="ir.ui.view"> <!-- id we want to give -->
+    <record id="department_pivot_id" model="ir.ui.view"> <!-- id we want to give -->
         <!-- these 3 fields are common in every view -->
         <field name="name">department.pivot.view</field> <!-- name you want to give -->
-        <field name="model">department.department</field> <!-- name from the model -->
+        <field name="model">department.department</field> <!-- name of the model -->
         <field name="arch" type="xml">
-                <pivot>
-                    <field name="no_of_students" type="row"/>
-                    <field name="no_of_students" type="col"/>
-                </pivot>
+            <pivot>
+                <field name="no_of_students" type="row"/>
+                <field name="no_of_students" type="col"/>
+            </pivot>
         </field>
     </record>
 
-    <record id = "department_graph_id" model="ir.ui.view"> <!-- id we want to give -->
+    <record id="department_graph_id" model="ir.ui.view"> <!-- id we want to give -->
         <!-- these 3 fields are common in every view -->
         <field name="name">department.graph.view</field> <!-- name you want to give -->
-        <field name="model">department.department</field> <!-- name from the model -->
+        <field name="model">department.department</field> <!-- name of the model -->
         <field name="arch" type="xml">
                 <graph>
                     <field name="no_of_students"/>
@@ -118,16 +118,16 @@
     <record id="department_form_id" model="ir.ui.view"> <!-- id we want to give -->
         <!-- these 3 fields are common in every view -->
         <field name="name">department.form.view</field> <!-- name you want to give -->
-        <field name="model">department.department</field> <!-- name from the model -->
+        <field name="model">department.department</field> <!-- name of the model -->
         <field name="arch" type="xml">
                 <form>
                     <sheet>
-                    <div name="button_box">
-                        <button string="Insert Record" type="object" icon="fa-star" name="insertRecord" class="oe_highlight"/>
-                        <button string="Show Total students" type="object" icon="fa-star" name="showTotalStudents" class="oe_highlight">
-                            <field name="no_of_students"/>
-                        </button>
-                    </div>
+                        <div name="button_box">
+                            <button string="Insert Record" type="object" icon="fa-star" name="insertRecord" class="oe_highlight"/>
+                            <button string="Show Total students" type="object" icon="fa-star" name="showTotalStudents" class="oe_highlight">
+                                <field name="no_of_students"/>
+                            </button>
+                        </div>
                         <group>
                             <field name="name"/>
                             <field name="code"/>
@@ -170,7 +170,7 @@
     </record>
 
 <!--  Server action  -->
-    <record id="myaction_server_id" model="ir.actions.server">
+    <record id="my_action_server_id" model="ir.actions.server">
         <field name="name">my_action_method</field>
         <field name="model_id" ref="cr_department_management.model_department_department"/>
         <field name="binding_model_id" ref="cr_department_management.model_department_department"/>

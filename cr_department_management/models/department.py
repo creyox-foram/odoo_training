@@ -40,6 +40,7 @@ class Department(models.Model):
         self.env['department.department'].create(values)
         print(self)
 
+    # it display the student tree view specific to department
     def showTotalStudents(self):
         dep_id = self.id
         return {
@@ -122,7 +123,7 @@ class Department(models.Model):
                 'numbercall': -1, # -1 means infinite times
                 'doall': False,
                 'name': "python ir cron",
-                'model_id': self.env['ir.model']._get_id(self._name),
+                'model_id': self.env['ir.model']._get_id(self._name), # returns the id of the model
                 'state': 'code',
                 'code': "model.testScheduleAction()",
             }

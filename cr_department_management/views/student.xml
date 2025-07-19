@@ -21,7 +21,7 @@
         <field name="company_id" eval="False"/>
     </record>
 
-    <record id = "student_id" model="ir.ui.view"> <!-- id we want to give -->
+    <record id="student_id" model="ir.ui.view"> <!-- id we want to give -->
         <!-- these 3 fields are common in every view -->
         <field name="name">student.tree.view</field> <!-- name you want to give -->
         <field name="model">student.student</field> <!-- name from the model -->
@@ -54,7 +54,7 @@
         </field>
     </record>
 
-    <record id = "student_pivot_id" model="ir.ui.view"> <!-- id we want to give -->
+    <record id="student_pivot_id" model="ir.ui.view"> <!-- id we want to give -->
         <!-- these 3 fields are common in every view -->
         <field name="name">student.pivot.view</field> <!-- name you want to give -->
         <field name="model">student.student</field> <!-- name from the model -->
@@ -78,7 +78,7 @@
         </field>
     </record>
 
-    <record id = "student_form_id" model="ir.ui.view"> <!-- id we want to give -->
+    <record id="student_form_id" model="ir.ui.view"> <!-- id we want to give -->
         <!-- these 3 fields are common in every view -->
         <field name="name">student.view</field> <!-- name you want to give -->
         <field name="model">student.student</field> <!-- name from the model -->

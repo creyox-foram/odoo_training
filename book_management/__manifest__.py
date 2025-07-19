@@ -10,7 +10,7 @@
     'website': '',
     'depends': ['base'],
     'data': [
-        'security\ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/author.xml',
         'views/book.xml'
     ],

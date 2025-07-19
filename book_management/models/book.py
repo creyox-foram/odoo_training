@@ -14,3 +14,4 @@ class Book(models.Model):
     publishdate = fields.Date(String="Publish Date : ")
     category = fields.Selection([('history', 'History'), ('science', 'Science'), ('physics', 'Physics')])
     image = fields.Image(String="Choose Image : ")
+

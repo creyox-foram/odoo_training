@@ -2,4 +2,3 @@
 # Part of Creyox Technologies.
 
 from . import product_product
-from . import product_order

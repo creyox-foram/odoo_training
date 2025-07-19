@@ -7,10 +7,10 @@
     """,
     'category': 'accounting',
     'website': '',
-    'depends': ['base', 'product'],
+    'depends': ['base', 'purchase', 'product', ],
     'author': 'dipen',
     'data': [
-        # 'views/purchase_order.xml',
+        'views/product_product.xml',
         'security/ir.model.access.csv',
     ],
     'demo': [],
@@ -18,4 +18,6 @@
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
+
+    'post_init_hook' : 'my_post_init_hook',
 }
