@@ -9,58 +9,94 @@ class AccountMove(models.Model):
 
     @api.onchange('partner_id')
     def calculate_customer_invoice_score(self):
-        customer_invoices = self.env['account.move'].search(
-            [('partner_id', '=', self.partner_id.id), ('payment_reference', '!=', None), ('state', '=', 'posted')])
-        payment_matrices = self.env['payment.term.matrix.rule'].search([])
-        for matrix in payment_matrices:
-            match matrix.matrix_id.id:
-                case 1:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # average_days_score = self.cal_avg_days_to_pay(customer_invoices, rules)
-                case 2:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # on_time_score = self.on_time_percent(customer_invoices, rules)
-                case 3:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # overdue_invoice_score = self.overdue_invoice_count(customer_invoices, rules)
-                case 4:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # oldest_overdue_invoice_score = self.oldest_overdue_age(customer_invoices, rules)
-                case 5:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.order_frequency_monthly(customer_invoices, rules)
-                case 6:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.sales_volume_6mo(customer_invoices, rules)
-                case 7:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.outstanding_balance(customer_invoices, rules)
-                case 8:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.credit_note_ratio(customer_invoices, rules)
-                case 9:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.days_since_last_payment(customer_invoices, rules)
-                case 10:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.first_sale_age(customer_invoices, rules)
-                case 11:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.avg_order_value(customer_invoices, rules)
-                case 12:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.dispute_count(customer_invoices, rules)
-                case 13:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.return_rate(customer_invoices, rules)
-                case 14:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    # self.payment_bounce_count(customer_invoices, rules)
-                case 15:
-                    rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
-                    self.invoice_volume_monthly(customer_invoices, rules)
+        if len(list(self.partner_id)):
+            customer_invoices = self.env['account.move'].search(
+                [('partner_id', '=', self.partner_id.id), ('state', '=', 'posted')])
+            payment_matrices = self.env['payment.term.matrix.rule'].search([])
+            kpi_scores = []
+            for matrix in payment_matrices:
+                match matrix.matrix_id.id:
+                    case 1:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.cal_avg_days_to_pay(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 2:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.on_time_percent(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 3:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.overdue_invoice_count(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 4:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.oldest_overdue_age(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 5:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.order_frequency_monthly(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 6:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.sales_volume_6mo(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 7:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.outstanding_balance(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 8:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.credit_note_ratio(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 9:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.days_since_last_payment(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 10:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.first_sale_age(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 11:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.avg_order_value(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 12:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.dispute_count(customer_invoices, rules)
+                        kpi_scores.append(score)
+                    case 15:
+                        rules = self.env['payment.term.matrix.rule.line'].search([('rule_id', '=', matrix.matrix_id.id)])
+                        score = self.invoice_volume_monthly(customer_invoices, rules)
+                        kpi_scores.append(score)
+
+            print(kpi_scores)
+            mapping_rules = self.env['payment.term.mapping.rule'].search([])
+            result_payment_term = None
+            total_score = sum(kpi_scores)
+            for mapping_rule in mapping_rules:
+                if total_score >= mapping_rule.score_min and total_score <= mapping_rule.score_max:
+                    result_payment_term = mapping_rule.payment_term_id.name
+            self.payment_term_recommendation_notification(result_payment_term)
+
+
+    # Recommends the Payment Term by Notification
+    def payment_term_recommendation_notification(self, payment_term):
+        print(payment_term)
+        if payment_term:
+            self.env['bus.bus']._sendone(self.env.user.partner_id, 'simple_notification', {
+                'type': 'success',
+                'title': 'Recommended Payment Term For This Customer!!',
+                'message': f'{payment_term} Recommended',
+            })
+        else :
+            self.env['bus.bus']._sendone(self.env.user.partner_id, 'simple_notification', {
+                'type': 'primary',
+                'title': 'Payment Term !!',
+                'message': 'No Payment Term Matched to this Customer',
+            })
 
     def find_invoice_payment_date(self, invoice):
+        # need to change from create date to invoice date
         if invoice:
             payment_date = []
             invoice_name = invoice.payment_reference
@@ -70,6 +106,9 @@ class AccountMove(models.Model):
             return max(payment_date).date()
 
     def verify_rules(self, rules, value):
+        """
+        Generate the score based on the user defined rules
+        """
         for rule in rules:
             if rule.operator == 'lt':
                 if value < rule.value_1:
@@ -99,22 +138,22 @@ class AccountMove(models.Model):
         This method calculates the customer payment score based on average score of each invoice's score
         """
         if len(list(invoices)):
-            total_score = 0
             per_invoice_score = []
-            counter = 0
             total_paid_invoices = 0
             for invoice in invoices:
-                payment_date = []
                 if invoice.payment_state == 'paid':
                     total_paid_invoices += 1
                     invoice_confirm_date = invoice.create_date.date()
                     payment_date = self.find_invoice_payment_date(invoice)
                     days_to_pay = (payment_date - invoice_confirm_date).days
                     per_invoice_score.append(self.verify_rules(rules, days_to_pay))
-            total_score = sum(per_invoice_score) / total_paid_invoices
-            return total_score
+            try:
+                total_score = sum(per_invoice_score) / total_paid_invoices
+                return total_score
+            except ZeroDivisionError:
+                return 0
         else:
-            return "new customer"
+            return 0
 
     def on_time_percent(self, invoices, rules):
         """
@@ -134,9 +173,9 @@ class AccountMove(models.Model):
                 ontime_invoice_percentage = (100 * on_time_invoices) / total_paid_invoices
                 return self.verify_rules(rules, ontime_invoice_percentage)
             except ZeroDivisionError:
-                return "no records"
+                return 0
         else:
-            return "new customer"
+            return 0
 
     def overdue_invoice_count(self, invoices, rules):
         """
@@ -144,20 +183,20 @@ class AccountMove(models.Model):
         """
         if len(list(invoices)):
             overdue_invoices = 0
-            flag = 0
+            no_paid_invoices = 1
             for invoice in invoices:
                 if invoice.payment_state == 'paid':
                     invoice_due_date = invoice.invoice_date_due
                     payment_date = self.find_invoice_payment_date(invoice)
-                    flag = 1  # indicates that some invoices are paid
+                    no_paid_invoices = 0
                     if payment_date > invoice_due_date:
                         overdue_invoices += 1
-            if flag:
+            if not no_paid_invoices:
                 return self.verify_rules(rules, overdue_invoices)
             else:
-                return "no records"
+                return 0
         else:
-            return "new customer"
+            return 0
 
     def oldest_overdue_age(self, invoices, rules):
         """
@@ -188,9 +227,9 @@ class AccountMove(models.Model):
             if flag:
                 return self.verify_rules(rules, days)
             else:
-                return "no record"
+                return 0
         else:
-            return "new customer"
+            return 0
 
     def order_frequency_monthly(self, invoices, rules):
         """
@@ -226,7 +265,7 @@ class AccountMove(models.Model):
             average_order_frequency = sum(monthly_order_frequency) / len(monthly_order_frequency)
             return self.verify_rules(rules, average_order_frequency)
         else:
-            return "new customer"
+            return 0
 
     def sales_volume_6mo(self, invoices, rules):
         """
@@ -242,7 +281,7 @@ class AccountMove(models.Model):
                     six_months_sales += invoice.amount_total
             return self.verify_rules(rules, six_months_sales)
         else:
-            return "new customer"
+            return 0
 
     def outstanding_balance(self, invoices, rules):
         """
@@ -256,10 +295,10 @@ class AccountMove(models.Model):
                 if invoice.payment_state != 'paid':
                     outstanding_balance += invoice.amount_residual
             if new_customer:
-                return "no record"
+                return 0
             return self.verify_rules(rules, outstanding_balance)
         else:
-            return "new customer"
+            return 0
 
     def credit_note_ratio(self, invoices, rules):
         """
@@ -268,17 +307,17 @@ class AccountMove(models.Model):
         if len(list(invoices)):
             reversed_invoices = 0
             score = 0
-            no_reversed = 0
+            no_reversed = 1
             for invoice in invoices:
                 if invoice.payment_state == 'reversed':
-                    no_reversed = 1
+                    no_reversed = 0
                     reversed_invoices += 1
             reversed_invoices_percentage = (reversed_invoices * 100) / len(list(invoices))
-            if no_reversed:
+            if not no_reversed:
                 return self.verify_rules(rules, reversed_invoices_percentage)
-            return "no record"
+            return 0
         else:
-            return "new customer"
+            return 0
 
     def days_since_last_payment(self, invoices, rules):
         """
@@ -302,9 +341,9 @@ class AccountMove(models.Model):
             if flag:
                 return self.verify_rules(rules, days)
             else:
-                return "no record"
+                return 0
         else:
-            return "new customer"
+            return 0
 
     def first_sale_age(self, invoices, rules):
         """
@@ -327,9 +366,9 @@ class AccountMove(models.Model):
                         first_invoice_age = (date.today() - payment_date).days
             if not no_invoices:
                 return self.verify_rules(rules, first_invoice_age)
-            return "no record"
+            return 0
         else:
-            return "new customer"
+            return 0
 
     def avg_order_value(self, invoices, rules):
         """
@@ -344,27 +383,27 @@ class AccountMove(models.Model):
             average_order_value = sum(per_invoice_amount)/ len(list(invoices))
             if no_invoices:
                 return self.verify_rules(rules, average_order_value)
-            return "no record"
+            return 0
         else:
-            return "new customer"
+            return 0
 
     def dispute_count(self, invoices, rules):
+        """
+        This method calculates the customer score based on ratio of refund orders to total orders
+        """
         if len(list(invoices)):
-            pass
+            reversed_invoices = 0
+            no_reversed = 1
+            for invoice in invoices:
+                if invoice.payment_state == 'reversed':
+                    no_reversed = 0
+                    reversed_invoices += 1
+            reversed_invoices_percentage = (reversed_invoices * 100) / len(list(invoices))
+            if not no_reversed:
+                return self.verify_rules(rules, reversed_invoices_percentage)
+            return 0
         else:
-            return "new customer"
-
-    def return_rate(self, invoices, rules):
-        if len(list(invoices)):
-            pass
-        else:
-            return "new customer"
-
-    def payment_bounce_count(self, invoices, rules):
-        if len(list(invoices)):
-            pass
-        else:
-            return "new customer"
+            return 0
 
     def invoice_volume_monthly(self, invoices, rules):
         """
@@ -401,4 +440,4 @@ class AccountMove(models.Model):
             return self.verify_rules(rules, average_monthly_invoices)
 
         else:
-            return "new customer"
+            return 0

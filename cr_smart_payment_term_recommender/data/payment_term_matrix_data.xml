@@ -72,18 +72,6 @@
         <field name="description">Number of invoices marked as dispute or reversed.</field>
         <field name="type">count</field>
     </record>
-    <record id="payment_term_return_rate" model="payment.term.matrix">
-        <field name="name">Return Rate</field>
-        <field name="code">return_rate</field>
-        <field name="description">Percentage of delivered orders returned.</field>
-        <field name="type">percent</field>
-    </record>
-    <record id="payment_term_payment_bounce_count" model="payment.term.matrix">
-        <field name="name">Payment Bounce Count</field>
-        <field name="code">payment_bounce_count</field>
-        <field name="description">Number of failed or reversed payments.</field>
-        <field name="type">count</field>
-    </record>
     <record id="payment_term_invoice_volume_per_month" model="payment.term.matrix">
         <field name="name">Invoice Volume per Month</field>
         <field name="code">invoice_volume_monthly</field>
