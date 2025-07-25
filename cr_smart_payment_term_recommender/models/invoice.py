@@ -100,7 +100,7 @@ class AccountMove(models.Model):
             })
         else :
             self.env['bus.bus']._sendone(self.env.user.partner_id, 'simple_notification', {
-                'type': 'primary',
+                'type': 'warning',
                 'title': 'Payment Term !!',
                 'message': 'No Payment Term Matched to this Customer',
             })
@@ -339,14 +339,10 @@ class AccountMove(models.Model):
         This method calculates the customer score based on ratio of reversed orders to total orders
         """
         reversed_invoices = 0
-        no_reversed = 1
         for invoice in invoices:
             if invoice.payment_state == 'reversed':
-                no_reversed = 0
                 reversed_invoices += 1
-        if not no_reversed:
-            return self.verify_rules(rules, reversed_invoices)
-        return 0
+        return self.verify_rules(rules, reversed_invoices)
 
     def invoice_volume_monthly(self, invoices, rules):
         """
