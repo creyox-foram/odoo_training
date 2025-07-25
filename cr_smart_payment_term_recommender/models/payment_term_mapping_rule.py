@@ -8,5 +8,5 @@ class PaymentTermMappingRule(models.Model):
     score_min = fields.Integer(string="Min Score")
     score_max = fields.Integer(string="Max Score")
     payment_term_id = fields.Many2one(comodel_name='account.payment.term', string='Payment Term')
-    active = fields.Boolean(string='Active')
+    active = fields.Boolean(string='Active', default='True')
 
